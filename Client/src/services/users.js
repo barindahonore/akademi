@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
+import {baseURLref} from '../constants/bnReference'
 
-const baseURL = 'http://localhost:4000/users'
+const baseURL = `${baseURLref}/users`
 
 const register = async (credentials) =>{
   const response = await axios.post(`${baseURL}/register` ,credentials ) ;

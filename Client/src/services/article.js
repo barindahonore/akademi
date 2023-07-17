@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { getAuthHeader } from './config';
+import {baseURLref} from '../constants/bnReference'
 
-const baseURL = 'http://localhost:4000/article'
+const baseURL = `${baseURLref}/article`
 
 const timeline  = async (page,limit) => {
   const response = await axios.get(`${baseURL}/timeline?page=${page}&limit=${limit}` , getAuthHeader()) ; 

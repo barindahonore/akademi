@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
+import {baseURLref} from '../constants/bnReference'
 
 const baseURL = '/assessments'
-const bnURL = 'http://localhost:4000'
+const bnURL = baseURLref
 
 const getAllExams = async (courseId) => {
   const response = await axios.get(`${bnURL}/${courseId}${baseURL}`, {

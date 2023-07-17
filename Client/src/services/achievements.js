@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
+import {baseURLref} from '../constants/bnReference'
 
-export const baseURL = 'http://localhost:4000/achievements'
+export const baseURL = `${baseURLref}/achievements`
 
 const getAllAchievements = async () => {
   const response = await axios.get(`${baseURL}`, getAuthHeader())
