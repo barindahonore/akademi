@@ -2,9 +2,10 @@ import axios from 'axios'
 import { getAuthHeader } from './config'
 
 const baseURL = '/assessments'
+const bnURL = 'http://localhost:4000'
 
 const getAllExams = async (courseId) => {
-  const response = await axios.get(`/${courseId}${baseURL}`, {
+  const response = await axios.get(`${bnURL}/${courseId}${baseURL}`, {
     ...getAuthHeader(),
     params: { filter: 'Exam' }
   })
@@ -12,7 +13,7 @@ const getAllExams = async (courseId) => {
 }
 
 const getAllAssignments = async (courseId) => {
-  const response = await axios.get(`/${courseId}${baseURL}`, {
+  const response = await axios.get(`${bnURL}/${courseId}${baseURL}`, {
     ...getAuthHeader(),
     params: { filter: 'Assignment' }
   })
@@ -21,7 +22,7 @@ const getAllAssignments = async (courseId) => {
 
 const submitAssessment = async (courseId, assessment) => {
   const response = await axios.post(
-    `/${courseId}${baseURL}`,
+    `${bnURL}/${courseId}${baseURL}`,
     assessment,
     getAuthHeader()
   )
@@ -30,7 +31,7 @@ const submitAssessment = async (courseId, assessment) => {
 
 const deleteAssessment = async (courseId, assessmentId) => {
   const response = await axios.delete(
-    `/${courseId}${baseURL}/${assessmentId}`,
+    `${bnURL}/${courseId}${baseURL}/${assessmentId}`,
     getAuthHeader()
   )
   return response.data

@@ -8,24 +8,24 @@ const createUser = async (req, res) => {
   try {
     const user = new User(req.body)
     user.code = Date.now()
-    await user.save()
-    const token = await user.generateAuthToken()
+    const newUser = await user.save()
+    console.log(newUser)
 
-    axios.post(awsEmailResisterUrl, {
-      InstructorEmail: user.email
-    })
-    .then(res => {
-          console.log('email resistered: ' + res)
-          User.findOneAndUpdate({code: user.code}, { isEmailRegistered: true }).exec()
-        })
-    .catch(err => {
-          console.log("can't resister email: " + err)
-          User.findOneAndUpdate({code: user.code}, { isEmailRegistered: false }).exec()
-        })
-
-    res.status(201).send({ user, token })
+    // axios.post(awsEmailResisterUrl, {
+    //   InstructorEmail: user.email
+    // })
+    // .then(res => {
+          // console.log('email resistered: ' + res)
+          // User.findOneAndUpdate({code: user.code}, { isEmailRegistered: true }).exec()
+    //     }) 
+    // .catch(err => {
+    //       console.log("can't resister email: " + err)
+    //       User.findOneAndUpdate({code: user.code}, { isEmailRegistered: false }).exec()
+    //     })
+// console.log("test")
+    return res.status(201).send({ Message: `new user was created`, user: {email: newUser.email, username: newUser.username} })
   } catch (e) {
-    res.status(400).send(e)
+    res.status(400).send({message: "something went worng", error: e})
   }
 }
 

@@ -1,4 +1,5 @@
-import { Comment, Form, List, Typography, Input, Button, Avatar } from 'antd'
+import { Form, List, Typography, Input, Button, Avatar } from 'antd'
+import { Comment } from '@ant-design/compatible'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'

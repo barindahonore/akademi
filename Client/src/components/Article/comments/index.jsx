@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import 'antd/dist/antd.css'
-import { Comment, Avatar, Form, Button, Input } from 'antd'
+import 'antd/dist/reset.css'
+import { Avatar, Form, Button, Input } from 'antd'
+import { Comment } from '@ant-design/compatible';
 import { useDispatch, useSelector } from 'react-redux'
 import {
   createComment,

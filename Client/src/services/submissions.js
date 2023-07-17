@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
 
+const bnURL = 'http://localhost:4000'
+
 const getAll = async (courseId, assessmentId) => {
   const response = await axios.get(
-    `/${courseId}/assessments/${assessmentId}/submissions/`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/submissions/`,
     getAuthHeader()
   )
   return response.data
@@ -11,7 +13,7 @@ const getAll = async (courseId, assessmentId) => {
 
 const getOrCreateSumbission = async (courseId, assessmentId, studentId) => {
   const response = await axios.get(
-    `/${courseId}/assessments/${assessmentId}/submissions/${studentId}`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/submissions/${studentId}`,
     getAuthHeader()
   )
   return response.data
@@ -24,7 +26,7 @@ const updateSubmission = async (
   submission
 ) => {
   const response = await axios.put(
-    `/${courseId}/assessments/${assessmentId}/submissions/${studentId}`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/submissions/${studentId}`,
     submission,
     getAuthHeader()
   )
@@ -33,7 +35,7 @@ const updateSubmission = async (
 
 const checkPlagiarism = async (courseId, assessmentId) => {
   const response = await axios.get(
-    `/${courseId}/assessments/${assessmentId}/check-plagiarism`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/check-plagiarism`,
     getAuthHeader()
   )
   return response.data
@@ -41,7 +43,7 @@ const checkPlagiarism = async (courseId, assessmentId) => {
 
 const autoGrade = async (courseId, assessmentId) => {
   const response = await axios.get(
-    `/${courseId}/assessments/${assessmentId}/auto-grade`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/auto-grade`,
     getAuthHeader()
   )
   return response.data
@@ -54,7 +56,7 @@ const gradeSubmission = async (
   submission
 ) => {
   const response = await axios.put(
-    `/${courseId}/assessments/${assessmentId}/submissions/${studentId}/grade`,
+    `${bnURL}/${courseId}/assessments/${assessmentId}/submissions/${studentId}/grade`,
     submission,
     getAuthHeader()
   )

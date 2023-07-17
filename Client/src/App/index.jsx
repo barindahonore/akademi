@@ -36,8 +36,8 @@ import GradeBook from '../views/gradeBook'
 import NotFoundView from '../views/NotFoundView'
 import Grader from '../views/assessmentGrading'
 
-import 'antd/dist/antd.css'
-import 'ant-design-pro/dist/ant-design-pro.css'
+import 'antd/dist/reset.css'
+// import 'ant-design-pro/dist/ant-design-pro.css'
 import S from './style'
 
 import AppHeader from '../components/AppHeader'
@@ -209,7 +209,7 @@ const AuthnticatedApp = () => {
             <Route path="/app/*" component={NotFoundView} />
           </Switch>
         </Content>
-        <S.Footer>Copyright ©2021 EduHub</S.Footer>
+        <S.Footer>Copyright ©2023 Knoworld</S.Footer>
       </Layout>
     </Layout>
   )

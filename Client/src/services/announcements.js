@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
 
-export const baseURL = '/announcements'
+export const baseURL = 'http://localhost:4000/announcements'
 
 const getAllAnnouncements = async (courseId) => {
   const response = await axios.get(

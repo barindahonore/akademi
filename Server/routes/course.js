@@ -1,6 +1,6 @@
 const express = require('express')
 const auth = require('../middleware/auth')
-const courseRouter = express.Router()
+const courseRouter = new express.Router()
 
 const {
   getAllCourses,
