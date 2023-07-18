@@ -42,6 +42,7 @@ import S from './style'
 
 import AppHeader from '../components/AppHeader'
 import CourseParticipants from '../views/courseParticipants'
+import CourseParticipants2 from '../views/courseParticipants2'
 import Assignments from '../views/assignments'
 import CourseSettings from '../views/courseSettings'
 import Achievements from '../views/achievements'
@@ -192,6 +193,10 @@ const AuthnticatedApp = () => {
             <CourseRoute
               path="/app/course/:courseId/particpants"
               component={CourseParticipants}
+            />
+            <CourseRoute
+              path="/app/course/:courseId/enroll"
+              component={CourseParticipants2}
             />
 
             <CourseRoute

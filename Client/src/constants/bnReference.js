@@ -1,2 +1,2 @@
-export const bnURLref = "http://localhost:4000"
-export const baseURLref = 'http://localhost:4000'
+export const bnURLref = "https://shy-red-trout-boot.cyclic.app"
+export const baseURLref = 'https://shy-red-trout-boot.cyclic.app'

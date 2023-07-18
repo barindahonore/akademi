@@ -33,7 +33,7 @@ const ModuleList = (props) => {
   }
 
   return (
-    <>
+    <div>
       <Modal
         title="Edit Module"
         visible={editModalActive}
@@ -127,7 +127,7 @@ const ModuleList = (props) => {
           />
         </Collapse.Panel>
       </Collapse>
-    </>
+    </div>
   )
 }
 

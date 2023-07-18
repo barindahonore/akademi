@@ -99,7 +99,7 @@ const Registeration = () => {
             </Form.Item>
             <Form.Item name="role">
               <Select prefix={<UserOutlined />} placeholder="role">
-                <Select.Option value="instructor">Instructor</Select.Option>
+                {/* <Select.Option value="instructor">Instructor</Select.Option> */}
                 <Select.Option value="student">Student</Select.Option>
               </Select>
             </Form.Item>
@@ -158,7 +158,7 @@ const Registeration = () => {
                 placeholder="confirm password"
               />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="code"
               rules={[
                 {
@@ -173,7 +173,7 @@ const Registeration = () => {
               ]}
             >
               <Input prefix={<CodeSandboxOutlined />} placeholder="code" />
-            </Form.Item>
+            </Form.Item> */}
 
             <FormItemFlex>
               <Form.Item

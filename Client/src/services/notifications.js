@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { getAuthHeader } from './config'
 import { notification } from 'antd'
+import {baseURLref} from '../constants/bnReference'
 
 
 export const baseURL = '/notification'
 
 const getAllNotifications = async () => {
   const response = await axios.get(
-    `${baseURL}/getNotificationsOfUser`,
+    `${baseURLref}/${baseURL}/getNotificationsOfUser`,
     getAuthHeader()
   )
   return response.data
@@ -15,7 +16,7 @@ const getAllNotifications = async () => {
 
 const push = async (data) => {
   const response = await axios.post(
-    `${baseURL}/push`,
+    `${baseURLref}/${baseURL}/push`,
     {
       data: data
     },
@@ -26,7 +27,7 @@ const push = async (data) => {
 
 const create = async (data, type, to) => {
   const response = await axios.post(
-    `${baseURL}/createNotification`,
+    `${baseURLref}/${baseURL}/createNotification`,
     {
       data: data,
       type: type,
@@ -39,7 +40,7 @@ const create = async (data, type, to) => {
 
 const edit = async (oldNot, newNot) => {
   const response = await axios.put(
-    `${baseURL}/editNotification`,
+    `${baseURLref}/${baseURL}/editNotification`,
     {
       oldNot: oldNot,
       newNot: newNot
@@ -51,7 +52,7 @@ const edit = async (oldNot, newNot) => {
 
 const del = async (not) => {
   const response = await axios.delete(
-    `${baseURL}/deleteNotification/`+not,
+    `${baseURLref}/${baseURL}/deleteNotification/`+not,
     getAuthHeader()
   )
   return response.data
@@ -59,14 +60,14 @@ const del = async (not) => {
 
 const delAll = async () => {
   const response = await axios.delete(
-    `${baseURL}/deleteNotificationsOfUser`,
+    `${baseURLref}/${baseURL}/deleteNotificationsOfUser`,
     getAuthHeader()
   )
   return response.data
 }
 
 const unsubscribe = async () => {
-  const response = await axios.delete(`${baseURL}/unsubscribe`, getAuthHeader())
+  const response = await axios.delete(`${baseURLref}/${baseURL}/unsubscribe`, getAuthHeader())
   if (response.data === 'unsubscribed') {
     notification.success({
       message: 'unsubscribed Successfully'

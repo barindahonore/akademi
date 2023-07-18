@@ -26,6 +26,11 @@ const CourseMenu = ({ url, privilege }) => {
           <Link to={`${url}/particpants`}>Particpants</Link>
         </Menu.Item>
       )}
+      {privilege !== 'student' && (
+        <Menu.Item>
+          <Link to={`${url}/enroll`}>Enroll</Link>
+        </Menu.Item>
+      )}
 
       {privilege !== 'student' && (
         <Menu.Item>

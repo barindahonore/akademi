@@ -58,9 +58,9 @@ const SideNav = (props) => {
         <Menu.Item key="/app/calendar" icon={<CalendarOutlined />}>
           <NavLink to="/app/calendar">Calendar</NavLink>
         </Menu.Item>
-        <Menu.Item key="/app/articles" icon={<RiArticleLine />}>
+        {/* <Menu.Item key="/app/articles" icon={<RiArticleLine />}>
           <NavLink to="/app/articles">Articles</NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
         {/* <SubMenu key="sub1" icon={<TeamOutlined />} title="Groups">
           <Menu.Item key="5">Place Holder 1</Menu.Item>
           <Menu.Item key="6">Place Holder 2</Menu.Item>
@@ -68,9 +68,9 @@ const SideNav = (props) => {
         <Menu.Item key="/app/acheivements" icon={<CrownOutlined />}>
           <NavLink to="/app/acheivements">Acheivements</NavLink>
         </Menu.Item>
-        <Menu.Item key="/app/archives" icon={<HddOutlined />}>
+        {/* <Menu.Item key="/app/archives" icon={<HddOutlined />}>
           <NavLink to="/app/archives">Archives</NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="/app/profile" icon={<UserOutlined />}>
           <NavLink to="/app/profile">Profile</NavLink>
         </Menu.Item>
