@@ -122,6 +122,36 @@ const enroll = async (req, res) => {
   }
 }
 
+//enrol by email
+
+const enrollByEmail = async (req, res) => {
+  const courseId = req.params.courseId
+  const email = req.body.email
+
+  try {
+    const user = await User.findOne({ email }).orFail()
+    const userId = user._id
+    let course = await Course.findById(courseId).orFail()
+    course = course.enroll(userId, user.role)
+
+    await course.save()
+    user.enrollments.push(courseId)
+    await user.save()
+
+    // Send to machine learning API
+
+    const result = await Course.getCoursesWithPrivilege(userId)
+
+    return res.status(200).json(result)
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({ error: err.message || err.toString() })
+  }
+}
+
+
+
+
 const unEnroll = async (req, res) => {
   const courseId = req.params.courseId
   const userId = req.body.userId
@@ -289,6 +319,7 @@ module.exports = {
   getAllCourses,
   getOneCourse,
   enroll,
+  enrollByEmail,
   unEnroll,
   deleteCourse,
   updateCourse,
