@@ -25,6 +25,14 @@ const createUser = async (req, res) => {
 // console.log("test")
     return res.status(201).send({ Message: `new user was created`, user: {email: newUser.email, username: newUser.username} })
   } catch (e) {
+    if (e.code === 11000 && e.keyPattern && e.keyPattern.username === 1) {
+      // Duplicate key error, meaning the username is already taken
+      return res.status(400).json({ customError: 'This username is already taken!' });
+    }
+    if (e.code === 11000 && e.keyPattern && e.keyPattern.email === 1) {
+      // Duplicate key error, meaning the username is already taken
+      return res.status(400).json({ customError: 'This emai is already registered' });
+    }
     res.status(400).send({message: "something went worng", error: e})
   }
 }

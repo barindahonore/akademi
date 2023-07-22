@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 
   email: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true,
     trim: true,
     lowercase: true,
@@ -83,8 +83,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /\d{3}-\d{3}-\d{4}/.test(v)
-      },
+        return /^\+250(78|79|72|73)\d{7}$/.test(v);
+      },            
       message: (props) => `${props.value} is not a valid phone number!`
     },
     required: [true, 'User phone number required']
@@ -205,6 +205,17 @@ userSchema.pre('save', async function (next) {
 
   next()
 })
+
+// userSchema.pre('save', async function (next) {
+//   const UserModel = this.constructor;
+//   const emailExists = await UserModel.findOne({ email: this.email });
+
+//   if (emailExists) {
+//     throw new Error('Email already exists');
+//   }
+
+//   next();
+// });
 
 const User = mongoose.model('User', userSchema)
 
