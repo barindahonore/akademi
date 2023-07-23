@@ -74,7 +74,8 @@ const Courses = () => {
 
   const handleCourseCardClick = (courseId, userId, userEnrolled) => {
     if (userEnrolled) history.push(`/app/course/${courseId}/modules`)
-    else confirmEnrolled(courseId, userId)
+    else alert("You must be unerolled to view this course")
+    // else confirmEnrolled(courseId, userId)
   }
 
   if (loading) return <Spinner size="large" />

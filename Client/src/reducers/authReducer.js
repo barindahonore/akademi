@@ -57,12 +57,20 @@ export const register = (credentials) => {
   return async () => {
     try {
       const response = await usersService.register(credentials)
+      console.log(response)
       if (!response) {
         throw new Error('invalid error with response')
       }
+      return response
     } catch (error) {
-      message.error('invalid credentials')
+      if(error.response.data.customError){
+        message.error(error.response.data.customError)
+      }else if(error.response.data.error.message){
+      // console.log(".......", error.response.data.message)
+      message.error(error.response.data.error.message)
+      }else{
       console.log(error)
+      }
     }
   }
 }

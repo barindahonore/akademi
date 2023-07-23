@@ -45,7 +45,7 @@ const CardContent = (props) => {
       >
         {!disableEnroll && (
           <>
-            {!enrolled && (
+            {/* {!enrolled && (
               <Button loading={loadingEnroll} onClick={() => onEnroll()}>
                 Enroll
               </Button>
@@ -55,7 +55,7 @@ const CardContent = (props) => {
               <Button loading={loadingEnroll} onClick={() => onUnenroll()}>
                 Unenroll
               </Button>
-            )}
+            )} */}
           </>
         )}
       </div>
@@ -73,7 +73,7 @@ const CourseCard = (props) => {
     disableEnroll
   } = props
   const { enrolled, privilege } = course
-
+console.log("<><><>",course)
   const loadingEnroll = course.loadingEnroll
 
   const optionMenu = (

@@ -25,14 +25,28 @@ import {
 const Registeration = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const onFinish = (values) => {
+  const onFinish = async(values) => {
     console.log('Received values of form: ', values)
+
     try {
-      dispatch(register(values))
-      history.push('/login')
+      const response = await dispatch(register(values));
+    
+      // Assuming the register function returns the HTTP status code in the response
+      if (response.user) {
+        history.push('/login');
+      } else {
+        console.log("Registration failed");
+      }
     } catch (e) {
-      console.log("can't register")
+      console.log("Error occurred during registration:", e);
     }
+    
+    // try {
+    //   dispatch(register(values))
+    //   history.push('/login')
+    // } catch (e) {
+    //   console.log("can't register")
+    // }
   }
 
   return (
