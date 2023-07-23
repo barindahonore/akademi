@@ -3,6 +3,8 @@ const Achievement = require('../../models/achievement')
 const Course = require('../../models/course')
 const Grades = require('../../models/gradesSummary')
 const User = require('../../models/user')
+const emailService = require('../../service/email.service')
+const enrollEmail = require('../../templates/enrollEmail')
 
 const getAllCourses = async (req, res) => {
   try {
@@ -131,7 +133,7 @@ const enrollByEmail = async (req, res) => {
   try {
     const user = await User.findOne({ email }).orFail()
     const userId = user._id
-    let course = await Course.findById(courseId).orFail()
+    let course = await Course.findById(courseId).populate('createdBy', 'name email').orFail()
     course = course.enroll(userId, user.role)
 
     await course.save()
@@ -142,7 +144,14 @@ const enrollByEmail = async (req, res) => {
 
     const result = await Course.getCoursesWithPrivilege(userId)
 
-    return res.status(200).json(result)
+    //notify student
+
+    if(result){
+      console.log(course)
+      const notify = emailService(user.email, `Welcome to ${course.name}!`, enrollEmail(user.name.split(" ")[0], course.name, user.email,user.passwordConfirm,course.createdBy.name,course.createdBy.email))
+      return res.status(200).send(result, notify)
+    }
+
   } catch (err) {
     console.log(err)
     res.status(400).json({ error: err.message || err.toString() })

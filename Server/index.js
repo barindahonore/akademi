@@ -3,6 +3,7 @@ const db = require('./config/database')
 const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const emailService = require('./service/email.service')
 const app = express()
 
 const user = require('./routes/user')
@@ -44,6 +45,7 @@ mongoose
     useFindAndModify: false
   })
   .then(() => {
+    // emailService()
     console.log('connected to MongoDB')
   })
   .catch((error) => {
