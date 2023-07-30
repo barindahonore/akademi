@@ -22,6 +22,7 @@ const SubmissionRouter = require('./routes/submissions')
 const gradeBookRouter = require('./routes/gradeBook')
 const enrollmentRouter = require('./routes/enrollment')
 const deadlineRouter = require('./routes/deadlines')
+const {createAdminUser} = require('./config/adminCreator')
 const achievementsRouter = require('./routes/achievementsRouter')
 
 const auth = require('./middleware/auth')
@@ -47,6 +48,7 @@ mongoose
   .then(() => {
     // emailService()
     console.log('connected to MongoDB')
+    createAdminUser()
   })
   .catch((error) => {
     console.log('error connection to MongoDB:', error.message)

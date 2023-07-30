@@ -1,6 +1,7 @@
 const express = require('express')
 const auth = require('../middleware/auth')
 const router = new express.Router()
+const {populateUserDataFromGoogleSheet} = require('../controller/uploadUsers/uploadUsersController')
 const {
   createUser,
   forgetPassword,
@@ -27,5 +28,6 @@ router.post('/reset/:token', ResetPassword)
 router.get('/me', auth, me)
 router.patch('/me', auth, updateUser)
 router.delete('/me', auth, deleteUser)
+router.get('/uploadusers',populateUserDataFromGoogleSheet)
 
 module.exports = router

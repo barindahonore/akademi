@@ -7,6 +7,7 @@ const awsEmailResisterUrl = '';
 const createUser = async (req, res) => {
   try {
     const user = new User(req.body)
+    // console.log(req.body)
     user.code = Date.now()
     const newUser = await user.save()
     console.log(newUser)
