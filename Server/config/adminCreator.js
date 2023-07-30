@@ -17,7 +17,8 @@ const createAdminUser = async () => {
     const existingUser = await User.findOne({ email: adminUser.email });
 
     if (existingUser) {
-      throw new Error('Admin user already exists!');
+      console.log('Admin user already exists!');
+      return "ex"
     }
 
     const newUser = new User(adminUser);
@@ -31,14 +32,14 @@ const createAdminUser = async () => {
     // Handle duplicate key errors
     if (e.code === 11000) {
       if (e.keyPattern && e.keyPattern.username === 1) {
-        throw new Error('This username is already taken!');
+        console.log('This username is already taken!');
       }
       if (e.keyPattern && e.keyPattern.email === 1) {
-        throw new Error('This email is already registered!');
+        console.log('This email is already registered!');
       }
     }
     // Handle other errors
-    throw new Error(e);
+    console.log(e);
   }
 };
 
