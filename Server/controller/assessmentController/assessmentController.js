@@ -7,7 +7,7 @@ const schedule = require('node-schedule')
 const { autoGrade } = require('../../helper/autoGradingJob')
 const { default: axios } = require('axios')
 
-const { checkplagiarismJob } = require('../../helper/plagarismJob')
+// const { checkplagiarismJob } = require('../../helper/plagarismJob')
 const { DateTime } = require('luxon')
 const Course = require('../../models/course')
 const Notification = require('../../models/notification')
@@ -108,10 +108,10 @@ const queuePlagarismjob = async (request, response) => {
 
     const date = DateTime.now().plus({ seconds: 5 }).toJSDate()
 
-    const job = schedule.scheduleJob(
-      date,
-      checkplagiarismJob.bind(null, courseId, assessmentId)
-    )
+    // const job = schedule.scheduleJob(
+    //   date,
+    //   checkplagiarismJob.bind(null, courseId, assessmentId)
+    // )
 
     const assessmentData = await Assessment.findById(assessmentId).orFail()
     const result = await Submission.find({
