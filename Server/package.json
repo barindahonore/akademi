@@ -41,8 +41,5 @@
     "password-hash": "^1.2.2",
     "validator": "^12.2.0",
     "web-push": "^3.4.4"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
   }
 }
