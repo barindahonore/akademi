@@ -9,11 +9,11 @@ The course content will be delivered through our user-friendly Learning Manageme
 
 As you embark on this educational journey, remember that learning is a collaborative process. Feel free to engage in discussions, ask questions, and share your insights with your fellow learners. Together, we can create a supportive and vibrant learning community. <br/> <br/>
 
-If you encounter any technical issues or have any questions related to the course content, assignments, or assessments, our dedicated support team is here to assist you. Don't hesitate to reach out to us at robertishimwe0@gmail.com.
+If you encounter any technical issues or have any questions related to the course content, assignments, or assessments, our dedicated support team is here to assist you. Don't hesitate to reach out to us at edu@melonelab.com.
 <br/>
 <br/>
 
-<b>Platform Access</b>: http://e-learning.ishimwe.rw
+<b>Platform Access</b>: https://www.melonelab.com
 <br/>
 <b>Email</b>: ${studentEmail}
 <br/>
@@ -32,7 +32,7 @@ ${instructorName}
 <br/>
 Instructor
 <br/>
-Akademi coding boot camp
+Melone Lab coding boot camp
 <br/>
 ${instructorEmail}
 

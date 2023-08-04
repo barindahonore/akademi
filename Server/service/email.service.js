@@ -13,7 +13,7 @@ const emailService = (sendTo, subject, htmlTemp) => {
 
 	const options = {
 		// from: process.env.SEND_FROM,
-		from: `"Akademi Team" <${process.env.SEND_FROM}>`,
+		from: `"Melone Lab Team" <${process.env.SEND_FROM}>`,
 		to: sendTo,
 		subject: subject,
 		html: `${htmlTemp} <br/> <br/>${footer}`,
