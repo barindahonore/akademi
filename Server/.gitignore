@@ -1,6 +1,5 @@
 /node_modules
 /Courses
 /course-file
-.env
 /rest/.env
 .env

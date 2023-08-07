@@ -1,4 +1,5 @@
 const User = require('../../models/user')
+const LoginInfo = require('../../models/loginInfo');
 const jwt = require('jsonwebtoken')
 const axios = require('axios')
 
@@ -51,16 +52,52 @@ const forgetPassword = async (req, res) => {
   }
 }
 
+// const login = async (req, res) => {
+//   try {
+//     const user = await User.findByCredentials(req.body.email, req.body.password)
+//     const token = await user.generateAuthToken()
+//     res.send({ user, token })
+//   } catch (e) {
+//     res.status(400).send()
+//     console.log(e)
+//   }
+// }
+
 const login = async (req, res) => {
   try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
-    const token = await user.generateAuthToken()
-    res.send({ user, token })
+    const user = await User.findByCredentials(req.body.email, req.body.password);
+    const token = await user.generateAuthToken();
+
+    // Save the login information in MongoDB
+    const loginInfo = new LoginInfo({
+      userEmail: req.body.email,
+      timestamp: new Date(),
+      actionType: 'LOGIN',
+      isSuccess: true
+    });
+
+    await loginInfo.save();
+
+    res.send({ user, token });
   } catch (e) {
-    res.status(400).send()
-    console.log(e)
+    res.status(400).send();
+    console.log(e);
+
+    // Save the failed login information in MongoDB
+    const loginInfo = new LoginInfo({
+      userEmail: req.body.email,
+      timestamp: new Date(),
+      actionType: 'LOGIN',
+      isSuccess: false,
+      failReason: e.message
+    });
+
+    await loginInfo.save();
   }
-}
+};
+
+
+
 
 const logout = async (req, res) => {
   try {
@@ -87,8 +124,26 @@ const logout = async (req, res) => {
     await user.save()
 
     res.send('You Logged out')
+    const loginInfo = new LoginInfo({
+      userEmail: user.email,
+      timestamp: new Date(),
+      actionType: 'LOGOUT',
+      isSuccess: true
+    });
+
+    await loginInfo.save();
   } catch (e) {
+    const loginInfo = new LoginInfo({
+      
+      timestamp: new Date(),
+      actionType: 'LOGOUT',
+      isSuccess: false,
+      failReason: `${e.message}`
+    });
+
+    await loginInfo.save();
     res.status(500).send({ error: e.message || e.toString() })
+    
   }
 }
 
