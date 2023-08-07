@@ -208,7 +208,7 @@ userSchema.pre('save', async function (next) {
 
 userSchema.pre('insertMany', async function (next, docs) {
   for (const user of docs) {
-    if (user.password && user.isModified('password')) {
+    if (user.password) {
       user.password = await bcrypt.hash(user.password, 8);
     }
   }
