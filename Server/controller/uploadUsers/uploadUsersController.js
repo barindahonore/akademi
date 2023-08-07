@@ -2,8 +2,8 @@ const { google } = require('googleapis')
 const User = require('../../models/user')
 
 const sheets = google.sheets('v4')
-const spreadsheetId = '1Pg59kVaFjxDslx90zmUj3z_F84_uGv4mlHQyReaGfAo'
-const range = 'Sheet1!A2:C'
+const spreadsheetId = '1v7yvvOzaNvicwNEFf0oFXrJNo4BqdhLYv5qe48HTx84'
+const range = 'Sheet1!C2:E'
 
 async function getDataFromGoogleSheet(auth) {
   try {

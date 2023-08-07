@@ -206,6 +206,15 @@ userSchema.pre('save', async function (next) {
   next()
 })
 
+userSchema.pre('insertMany', async function (next, docs) {
+  for (const user of docs) {
+    if (user.password && user.isModified('password')) {
+      user.password = await bcrypt.hash(user.password, 8);
+    }
+  }
+
+  next();
+});
 // userSchema.pre('save', async function (next) {
 //   const UserModel = this.constructor;
 //   const emailExists = await UserModel.findOne({ email: this.email });
