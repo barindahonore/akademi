@@ -16,6 +16,7 @@ const emailService = (sendTo, subject, htmlTemp) => {
 		from: `"Melone Lab Team" <${process.env.SEND_FROM}>`,
 		to: sendTo,
 		subject: subject,
+		// body:htmlTemp,
 		html: `${htmlTemp} <br/> <br/>${footer}`,
 	};
 

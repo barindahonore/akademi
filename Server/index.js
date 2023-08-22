@@ -24,10 +24,15 @@ const enrollmentRouter = require('./routes/enrollment')
 const deadlineRouter = require('./routes/deadlines')
 const {createAdminUser} = require('./config/adminCreator')
 const achievementsRouter = require('./routes/achievementsRouter')
+const emailRouter = require('./routes/emailsRoute')
+const logsRouter = require('./routes/logs')
+
 
 const auth = require('./middleware/auth')
 
 const fileUpload = require('express-fileupload')
+
+// const {getLoginAndLogoutLogs} = require('./controller/logsController/loginLogs')
 
 app.use(
   fileUpload({
@@ -79,6 +84,8 @@ app.use('/courses/:courseId/modules', courseModule)
 app.use('/courses/:courseId/modules/:moduleId/module-item', courseModuleItem)
 app.use('/courses/:courseId/lectures', lectureRouter)
 app.use('/achievements', achievementsRouter)
+app.use('/email', emailRouter)
+app.use('/logs', logsRouter)
 
 const port = process.env.PORT || 4000
 app.listen(port, () => {
