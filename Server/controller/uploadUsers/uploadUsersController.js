@@ -59,6 +59,8 @@ async function populateUserDataFromGoogleSheet(req, res) {
     })
 
     const dataFromSheet = await getDataFromGoogleSheet(auth)
+
+    console.log("data from sheet",dataFromSheet)
     const passwordLength = 10
     const dataFromSheetWithPassword = []
 
