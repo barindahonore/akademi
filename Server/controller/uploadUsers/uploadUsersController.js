@@ -17,7 +17,7 @@ async function getDataFromGoogleSheet(auth) {
     const arrayOfObjects = newDataGathered.map(([name, mobile, email]) => {
       return { name, mobile, email }
     })
-
+    console.log(">>>>>>>>>>>>", arrayOfObjects)
     return arrayOfObjects
   } catch (error) {
     console.error('Error fetching data from Google Sheet:', error.message)
@@ -46,6 +46,8 @@ async function generateUniqueUsername(name) {
   while (await User.findOne({ username })) {
     username = baseUsername + randomNumber
   }
+
+  console.log(username)
   return username
 }
 
