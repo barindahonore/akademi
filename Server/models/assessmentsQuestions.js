@@ -64,12 +64,12 @@ const Question = mongoose.model('Question', assessmentsQuestionsSchema)
 const ChoiceQuestion = Question.discriminator(
   'MCQ',
   choiceQuestionSchema,
-  options
+  
 )
 const WrittenQuestion = Question.discriminator(
   'Esay',
   writtenQuestionSchema,
-  options
+  
 )
 
 module.exports = {
