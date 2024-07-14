@@ -7,7 +7,7 @@ const options = {
 
 const assessmentSchema = new mongoose.Schema(
   {
-    // type: { type: String, enum: ['Exam', 'Assignment'], required: true },
+    type: { type: String, enum: ['Exam', 'Assignment'], required: true },
     createdBy: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' },
     files: [{ name: String, url: { type: String, required: true } }],
     title: { type: String, required: true },
@@ -31,7 +31,7 @@ const assessmentSchema = new mongoose.Schema(
     },
     questions: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Question' }]
   },
-  { timestamps: true }
+  { ...options, timestamps: true }
 )
 
 /************ assessments *************/
@@ -97,7 +97,7 @@ virtualRemainingTime.get(function (value, virtual, doc) {
 
 examSchema.set('toJSON', { virtuals: true })
 
-const Exam = Assessment.discriminator('Exam', examSchema)
+const Exam = Assessment.discriminator('Exam', examSchema, options)
 
 /************ assignements *************/
 
@@ -111,7 +111,8 @@ assignmentSchema.set('toJSON', { virtuals: true })
 
 const Assignment = Assessment.discriminator(
   'Assignment',
-  assignmentSchema
+  assignmentSchema,
+  options
 )
 
 module.exports = {

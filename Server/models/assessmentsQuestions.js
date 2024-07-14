@@ -41,7 +41,7 @@ const choiceQuestionSchema = new mongoose.Schema(
     ans: { type: String, required: true },
     text_match: { type: Boolean, default: false }
   },
-  
+  options
 )
 
 const writtenQuestionSchema = new mongoose.Schema(
@@ -56,7 +56,7 @@ const writtenQuestionSchema = new mongoose.Schema(
     ans: { type: String, required: true },
     text_match: { type: Boolean, default: false }
   },
-  
+  options
 )
 
 const Question = mongoose.model('Question', assessmentsQuestionsSchema)
@@ -64,12 +64,12 @@ const Question = mongoose.model('Question', assessmentsQuestionsSchema)
 const ChoiceQuestion = Question.discriminator(
   'MCQ',
   choiceQuestionSchema,
-  
+  options
 )
 const WrittenQuestion = Question.discriminator(
   'Esay',
   writtenQuestionSchema,
-  
+  options
 )
 
 module.exports = {
