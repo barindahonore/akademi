@@ -149,6 +149,7 @@ const enrollByEmail = async (req, res) => {
     if(result){
       console.log(course)
       const notify = emailService(user.email, `Welcome to ${course.name}!`, enrollEmail(user.name.split(" ")[0], course.name, user.email,user.passwordConfirm,course.createdBy.name,course.createdBy.email))
+      console.log(notify)
       res.status(200).send(result)
     }
 
