@@ -1,31 +1,84 @@
 const { update } = require('../../models/Assignments');
 const Assigment = require('../../models/Assignments');
 
-const createAssignment = async (req, res) => {
+// const createAssignment = async (req, res) => {
 
+//     const role = req.user.role;
+
+//     if (role === 'instructor') {
+//         try {
+
+//             let ass = new Assigment(req.body);
+//             if (!ass) {
+//                 throw new Error('this an error with ass');
+//             }
+//             ass.createdAt = new Date();
+//             ass.createdBy = req.user.id;
+//             await ass.save()
+//             res.status(201).send(ass)
+//         } catch (e) {
+//             res.status(400).send();
+//             console.log(e)
+//         }
+//     }
+//     else {
+//         res.status(400).send('you are not allow to create assignment');
+//         console.log('you are not instructor');
+//     }
+// }
+
+
+
+const createAssignment = async (req, res) => {
     const role = req.user.role;
 
-    if (role === 'instructor') {
-        try {
+    if (role !== 'instructor') {
+        console.log('Unauthorized attempt to create assignment');
+        return res.status(403).send('You are not authorized to create assignments');
+    }
 
-            let ass = new Assigment(req.body);
-            if (!ass) {
-                throw new Error('this an error with ass');
-            }
-            ass.createdAt = new Date();
-            ass.createdBy = req.user.id;
-            await ass.save()
-            res.status(201).send(ass)
-        } catch (e) {
-            res.status(400).send();
-            console.log(e)
-        }
+    try {
+        const assignmentData = {
+            AssignmentType: req.body.AssignmentType,
+            title: req.body.title,
+            totalpoints: req.body.totalpoints,
+            visiable: req.body.visiable,
+            startedAt: req.body.startedAt,
+            expiredAt: req.body.expiredAt,
+            Questions: req.body.Questions.map(q => ({
+                QuestionType: q.QuestionType,
+                QuestionTitle: q.QuestionTitle,
+                Points: q.Points,
+                Answer: q.Answer,
+                AutoGraded: q.AutoGraded,
+                TextMatch: q.TextMatch,
+                KeyWords: q.KeyWords,
+                Answers: q.Answers
+            })),
+            createdBy: req.user.id,
+            createdAt: new Date()
+        };
+
+        console.log('Creating new assignment with data:', assignmentData);
+
+        let newAssignment = new Assignment(assignmentData);
+
+        await newAssignment.save();
+
+        console.log('Assignment created successfully:', newAssignment);
+        res.status(201).json({
+            message: 'Assignment created successfully',
+            assignment: newAssignment
+        });
+    } catch (error) {
+        console.error('Error creating assignment:', error);
+        res.status(400).json({
+            message: 'Failed to create assignment',
+            error: error.message
+        });
     }
-    else {
-        res.status(400).send('you are not allow to create assignment');
-        console.log('you are not instructor');
-    }
-}
+};
+
 
 
 
