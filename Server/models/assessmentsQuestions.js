@@ -6,7 +6,7 @@ const options = {
 
 const assessmentsQuestionsSchema = new mongoose.Schema(
   {
-    // type: { type: String, enum: ['MCQ', 'Esay'], required: true },
+    type: { type: String, enum: ['MCQ', 'Esay'], required: true },
     question_number: { type: Number, required: true },
     points: { type: Number, required: true },
     question_text: { type: String, required: true },
