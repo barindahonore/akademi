@@ -18,7 +18,7 @@ const createAssignment = async (req, res) => {
             res.status(201).send(ass)
         } catch (e) {
             res.status(400).send();
-            console.log(e)
+            console.log(">>>>>>",e)
         }
     }
     else {
