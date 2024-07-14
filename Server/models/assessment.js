@@ -31,7 +31,7 @@ const assessmentSchema = new mongoose.Schema(
     },
     questions: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Question' }]
   },
-  { ...options, timestamps: true }
+  { timestamps: true }
 )
 
 /************ assessments *************/
@@ -111,8 +111,7 @@ assignmentSchema.set('toJSON', { virtuals: true })
 
 const Assignment = Assessment.discriminator(
   'Assignment',
-  assignmentSchema,
-  options
+  assignmentSchema
 )
 
 module.exports = {
