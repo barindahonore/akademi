@@ -229,7 +229,7 @@ const DeadlinesViewer = (props) => {
       <List
         style={{ maxHeight: '445px', overflow: 'hidden', overflowY: 'auto' }}
         dataSource={deadlines.filter((item) => {
-          return DateTime.fromISO(item.deadline) >= DateTime.now()
+          return DateTime.fromISO(item?.deadline) >= DateTime.now()
         })}
         locale={{
           emptyText: (

@@ -1,14 +1,21 @@
-.camera{
-    position: relative;
-    float: right;
-}
-.sound-wave{
-    position: relative;
-    width: 240px;
-    height: 30px;
-}
-.container-ch{
-    position: relative;
-    float: right;
-    max-width: 240px;
-}
+.exam-start-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .exam-start-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .exam-start-container ul {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .exam-start-container button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
