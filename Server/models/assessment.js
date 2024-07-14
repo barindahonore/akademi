@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 const { DateTime } = require('luxon')
 
 const options = {
-  discriminatorKey: 'type1'
+  discriminatorKey: 'type'
 }
 
 const assessmentSchema = new mongoose.Schema(
   {
-    type: { type: String, enum: ['Exam', 'Assignment'], required: true },
+    // type: { type: String, enum: ['Exam', 'Assignment'], required: true },
     createdBy: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' },
     files: [{ name: String, url: { type: String, required: true } }],
     title: { type: String, required: true },
