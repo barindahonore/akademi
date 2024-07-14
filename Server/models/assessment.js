@@ -97,7 +97,7 @@ virtualRemainingTime.get(function (value, virtual, doc) {
 
 examSchema.set('toJSON', { virtuals: true })
 
-const Exam = Assessment.discriminator('Exam', examSchema, options)
+const Exam = Assessment.discriminator('Exam', examSchema)
 
 /************ assignements *************/
 
